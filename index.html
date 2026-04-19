@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTJ Fellowship</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; border-bottom: 1px solid #1a1a1a; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 900; font-size: 14px; letter-spacing: 4px; }
+    .nav-links { display: flex; gap: 40px; }
+    .nav-links a { font-size: 13px; color: #666; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { font-size: 13px; border: 1px solid #fff; padding: 8px 20px; transition: all 0.2s; }
+    .nav-cta:hover { background: #fff; color: #000; }
+    section { border-bottom: 1px solid #1a1a1a; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 64px; }
+    #hero .container { padding-top: 60px; padding-bottom: 60px; width: 100%; }
+    .eyebrow { font-size: 12px; color: #666; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 32px; }
+    h1 { font-size: clamp(48px, 10vw, 110px); font-weight: 900; line-height: 0.95; letter-spacing: -3px; }
+    .hero-sub { margin-top: 32px; max-width: 500px; font-size: 18px; color: #888; line-height: 1.7; }
+    .btn-row { margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { background: #fff; color: #000; font-weight: 700; padding: 16px 32px; font-size: 13px; letter-spacing: 1px; transition: background 0.2s; display: inline-block; }
+    .btn-primary:hover { background: #e0e0e0; }
+    .btn-outline { border: 1px solid #333; color: #fff; padding: 16px 32px; font-size: 13px; letter-spacing: 1px; transition: border-color 0.2s; display: inline-block; }
+    .btn-outline:hover { border-color: #fff; }
+    .section-label { font-size: 11px; color: #666; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 24px; }
+    h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.1; }
+    #about .container { padding: 120px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .body-text { font-size: 15px; color: #888; line-height: 1.8; margin-bottom: 20px; }
+    .body-text.bold { color: #fff; font-weight: 600; }
+    #program { background: #fff; color: #000; }
+    #program .container { padding: 120px 24px; }
+    #program .section-label { color: #999; }
+    .tracks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #ddd; margin-top: 64px; }
+    .track { background: #fff; padding: 48px; }
+    .track-duration { font-size: 11px; color: #999; letter-spacing: 4px; text-transform: uppercase; }
+    .track-name { font-size: 26px; font-weight: 900; margin: 8px 0 24px; }
+    .track-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .track-list li { font-size: 14px; color: #555; display: flex; gap: 12px; align-items: start; }
+    .track-list li::before { content: "—"; color: #000; flex-shrink: 0; }
+    #apply .container { padding: 120px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .apply-meta { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    .apply-meta p { font-size: 14px; color: #666; }
+    .form-box { border: 1px solid #1a1a1a; padding: 40px; }
+    .form-box h3 { font-size: 18px; font-weight: 800; margin-bottom: 24px; }
+    .form-field { margin-bottom: 16px; }
+    .form-field input, .form-field select, .form-field textarea {
+      width: 100%; background: transparent; border: 1px solid #222; color: #fff;
+      padding: 14px 16px; font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s;
+    }
+    .form-field input::placeholder, .form-field textarea::placeholder { color: #444; }
+    .form-field select { color: #444; }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: #fff; }
+    .form-field textarea { resize: none; }
+    .submit-btn { width: 100%; background: #fff; color: #000; border: none; font-weight: 700; padding: 16px; font-size: 14px; letter-spacing: 1px; cursor: pointer; font-family: inherit; transition: background 0.2s; margin-top: 8px; }
+    .submit-btn:hover { background: #e0e0e0; }
+    footer { padding: 60px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: start; }
+    .footer-name { font-weight: 900; font-size: 17px; letter-spacing: 4px; }
+    .footer-sub { font-size: 13px; color: #444; margin-top: 4px; }
+    .footer-link { font-size: 13px; color: #444; }
+    .footer-link:hover { color: #fff; }
+    .footer-bottom { max-width: 1100px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid #111; font-size: 11px; color: #333; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      #about .container, #apply .container { grid-template-columns: 1fr; gap: 40px; }
+      .tracks-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="logo">OTJ FELLOWSHIP</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#program">Program</a>
+      <a href="#apply">Apply</a>
+    </div>
+    <a href="#apply" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="container">
+    <p class="eyebrow">Nairobi, Kenya · 2026 Cohort</p>
+    <h1>Build the<br>future of<br>African finance.</h1>
+    <p class="hero-sub">OTJ Fellowship is a selective program for the next generation of African quantitative researchers, engineers, and fund managers.</p>
+    <div class="btn-row">
+      <a href="#apply" class="btn-primary">Apply for 2026 Cohort</a>
+      <a href="#program" class="btn-outline">View Program</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div>
+      <p class="section-label">About</p>
+      <h2>Africa needs its own quants.</h2>
+    </div>
+    <div>
+      <p class="body-text">The hedge fund industry is built on talent. Mathematicians, engineers, and researchers who understand markets deeply enough to build systems that beat them.</p>
+      <p class="body-text">That talent exists in Africa — in every university, in every city. It just needs infrastructure, mentorship, and a path to the industry.</p>
+      <p class="body-text bold">OTJ Fellowship is that path.</p>
+    </div>
+  </div>
+</section>
+
+<section id="program">
+  <div class="container">
+    <p class="section-label">Program</p>
+    <h2>Three tracks. One goal.</h2>
+    <div class="tracks-grid">
+      <div class="track">
+        <p class="track-duration">12 weeks</p>
+        <h3 class="track-name">Quant Research</h3>
+        <ul class="track-list">
+          <li>Alpha strategy design</li>
+          <li>Backtesting and validation</li>
+          <li>Statistical modelling</li>
+          <li>Live deployment with OTJ Capital</li>
+        </ul>
+      </div>
+      <div class="track">
+        <p class="track-duration">12 weeks</p>
+        <h3 class="track-name">Engineering</h3>
+        <ul class="track-list">
+          <li>Trading system architecture</li>
+          <li>Real-time data pipelines</li>
+          <li>Risk engine development</li>
+          <li>Production infrastructure</li>
+        </ul>
+      </div>
+      <div class="track">
+        <p class="track-duration">8 weeks</p>
+        <h3 class="track-name">Fund Operations</h3>
+        <ul class="track-list">
+          <li>Portfolio construction</li>
+          <li>Risk management</li>
+          <li>Investor reporting</li>
+          <li>Regulatory compliance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apply">
+  <div class="container">
+    <div>
+      <p class="section-label">Applications</p>
+      <h2>2026 Cohort is open.</h2>
+      <p class="body-text" style="margin-top:16px">We accept 10 fellows per cohort. We look for exceptional people with deep curiosity for markets, mathematics, and systems — regardless of background.</p>
+      <div class="apply-meta">
+        <p>📍 Nairobi, Kenya (in-person)</p>
+        <p>📅 Cohort starts Q3 2026</p>
+        <p>💸 Stipend provided</p>
+        <p>🚀 Top fellows join OTJ Capital full-time</p>
+      </div>
+    </div>
+    <div class="form-box">
+      <h3>Apply now</h3>
+      <div class="form-field"><input type="text" placeholder="Full name" /></div>
+      <div class="form-field"><input type="email" placeholder="Email address" /></div>
+      <div class="form-field">
+        <select>
+          <option value="">Select track</option>
+          <option>Quant Research</option>
+          <option>Engineering</option>
+          <option>Fund Operations</option>
+        </select>
+      </div>
+      <div class="form-field"><textarea rows="4" placeholder="Why OTJ Fellowship? (2–3 sentences)"></textarea></div>
+      <button class="submit-btn">Submit Application</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">OTJ FELLOWSHIP</p>
+      <p class="footer-sub">Nairobi, Kenya</p>
+    </div>
+    <a href="https://otjcapital.com" class="footer-link">OTJ Capital →</a>
+  </div>
+  <div class="footer-bottom">© 2026 OTJ Fellowship. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
