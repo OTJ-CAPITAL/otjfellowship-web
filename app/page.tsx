@@ -1,17 +1,19 @@
-import Navbar from '@/components/ui/Navbar'
-import Hero from '@/components/sections/Hero'
-import About from '@/components/sections/About'
-import Program from '@/components/sections/Program'
-import Apply from '@/components/sections/Apply'
-import Footer from '@/components/ui/Footer'
+import Navigation from '@/components/shared/Navigation'
+import Footer from '@/components/shared/Footer'
+import Hero from '@/components/fellowship/Hero'
+import NotASchool from '@/components/fellowship/NotASchool'
+import Disciplines from '@/components/fellowship/Disciplines'
+import Stages from '@/components/fellowship/Stages'
+import Apply from '@/components/fellowship/Apply'
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
+    <main style={{ background: '#FAFAFA' }}>
+      <Navigation />
       <Hero />
-      <About />
-      <Program />
+      <NotASchool />
+      <Disciplines />
+      <Stages />
       <Apply />
       <Footer />
     </main>
