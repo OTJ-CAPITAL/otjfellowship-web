@@ -4,30 +4,28 @@ import { useInView } from 'react-intersection-observer'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
 const stages = [
-  { num: '01', title: 'Selection', desc: 'A rigorous process designed to identify exceptional thinkers across Africa and emerging markets. We look for intellectual depth, systems thinking, and the will to build.' },
-  { num: '02', title: 'Foundation', desc: 'Intensive grounding in quantitative finance, machine learning, and AI-driven trading systems. Theory and practice from day one.' },
-  { num: '03', title: 'Deployment', desc: 'Fellows embedded directly into OTJ Capital operations. Real responsibilities. Real stakes. Real decisions that affect real capital.' },
-  { num: '04', title: 'Evolution', desc: 'The best Fellows become permanent architects of the OTJ system. They do not graduate and leave. They stay and build.' },
+  { num:'01', title:'Selection', desc:'A rigorous process. We test for quantitative reasoning, systems thinking, and intellectual honesty. Not credentials.' },
+  { num:'02', title:'Foundation', desc:'12 weeks of intensive training. Quantitative finance, ML fundamentals, Python, risk management. No shortcuts.' },
+  { num:'03', title:'Deployment', desc:'You work on the real fund. Real models. Real capital. Real consequences. This is when you learn what you actually know.' },
+  { num:'04', title:'Integration', desc:'The best Fellows join OTJ permanently. Not as employees — as architects of the system.' },
 ]
 
 export default function Stages() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1, fallbackInView: true })
+  const { ref, inView } = useInView({ triggerOnce: true, fallbackInView: true })
   return (
-    <section id="programme" ref={ref} style={{ background: '#FAFAFA', padding: '120px 32px' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <motion.div variants={staggerContainer} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-          <motion.div variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontSize: '10px', color: '#C9A84C', letterSpacing: '3px', marginBottom: '16px' }}>THE PROGRAMME</motion.div>
-          <motion.h2 variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(32px, 4vw, 48px)', color: '#080808', marginBottom: '64px' }}>Four stages. Real stakes.</motion.h2>
-          <motion.div variants={staggerContainer} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0', position: 'relative' }}>
-            {/* Gold connecting line */}
-            <div style={{ position: 'absolute', top: '20px', left: '10%', right: '10%', height: '2px', background: 'linear-gradient(90deg, #C9A84C, #C9A84C)', zIndex: 0, opacity: 0.3 }} />
-            {stages.map((s, i) => (
-              <motion.div key={i} variants={fadeUp} style={{ padding: '0 24px 0 0', position: 'relative', zIndex: 1 }}>
-                <div style={{ width: '40px', height: '40px', background: '#FFFFFF', border: '2px solid #C9A84C', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px' }}>
-                  <span style={{ fontFamily: 'JetBrains Mono', fontSize: '12px', color: '#C9A84C', fontWeight: 700 }}>{s.num}</span>
+    <section id="programme" ref={ref} style={{ padding:'120px 32px', background:'#F5F5F5', borderBottom:'1px solid #E5E5E5' }}>
+      <div style={{ maxWidth:'1280px', margin:'0 auto' }}>
+        <motion.div variants={staggerContainer} initial="hidden" animate={inView?'visible':'hidden'}>
+          <motion.div variants={fadeUp} style={{ fontFamily:'var(--font-mono)', fontSize:'11px', letterSpacing:'2px', color:'#888', marginBottom:'16px' }}>THE PROGRAMME</motion.div>
+          <motion.h2 variants={fadeUp} style={{ fontFamily:'var(--font-sg)', fontWeight:800, fontSize:'clamp(28px,4vw,48px)', color:'#000', letterSpacing:'-1px', marginBottom:'64px' }}>Four stages. Real stakes.</motion.h2>
+          <motion.div variants={staggerContainer} style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(220px, 1fr))', gap:'0' }}>
+            {stages.map((s,i) => (
+              <motion.div key={i} variants={fadeUp} style={{ padding:'40px 32px', border:'1px solid #E5E5E5', marginLeft: i>0?'-1px':'0', background:'#fff' }}>
+                <div style={{ width:'40px', height:'40px', border:'1px solid #000', display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'24px' }}>
+                  <span style={{ fontFamily:'var(--font-mono)', fontSize:'12px', fontWeight:500 }}>{s.num}</span>
                 </div>
-                <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '20px', color: '#080808', marginBottom: '12px' }}>{s.title}</h3>
-                <p style={{ fontFamily: 'Inter', fontSize: '14px', color: '#555555', lineHeight: 1.7 }}>{s.desc}</p>
+                <h3 style={{ fontFamily:'var(--font-sg)', fontWeight:700, fontSize:'20px', color:'#000', marginBottom:'12px' }}>{s.title}</h3>
+                <p style={{ fontSize:'14px', color:'#555', lineHeight:1.7 }}>{s.desc}</p>
               </motion.div>
             ))}
           </motion.div>

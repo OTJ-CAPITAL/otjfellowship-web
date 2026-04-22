@@ -4,31 +4,23 @@ import { useInView } from 'react-intersection-observer'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
 export default function NotASchool() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1, fallbackInView: true })
+  const { ref, inView } = useInView({ triggerOnce: true, fallbackInView: true })
   return (
-    <section ref={ref} style={{ background: '#FAFAFA', padding: '120px 32px' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <motion.div variants={staggerContainer} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-          <motion.h2 variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(36px, 4vw, 52px)', color: '#080808', marginBottom: '64px', lineHeight: 1.2 }}>
-            Not a school.<br />Not a firm.<br />Both.
+    <section ref={ref} style={{ padding:'120px 32px', background:'#F5F5F5', borderBottom:'1px solid #E5E5E5' }}>
+      <div style={{ maxWidth:'1280px', margin:'0 auto' }}>
+        <motion.div variants={staggerContainer} initial="hidden" animate={inView?'visible':'hidden'}>
+          <motion.h2 variants={fadeUp} style={{ fontFamily:'var(--font-sg)', fontWeight:800, fontSize:'clamp(28px,4vw,56px)', color:'#000', letterSpacing:'-1.5px', lineHeight:1.1, marginBottom:'64px' }}>
+            Not a school.<br />Not a consultancy.<br />The actual fund.
           </motion.h2>
-          <motion.div variants={staggerContainer} style={{ display: 'grid', gridTemplateColumns: '1fr 1px 1fr', gap: '64px', alignItems: 'start' }}>
+          <motion.div variants={staggerContainer} style={{ display:'grid', gridTemplateColumns:'1fr 1px 1fr', gap:'64px' }}>
             <motion.div variants={fadeUp}>
-              <p style={{ fontFamily: 'Inter', fontSize: '18px', color: '#555555', lineHeight: 1.8, marginBottom: '24px' }}>
-                The OTJ Fellowship is the human intelligence layer of the OTJ ecosystem. We do not train traders. We do not hire analysts.
-              </p>
-              <p style={{ fontFamily: 'Inter', fontSize: '18px', color: '#555555', lineHeight: 1.8 }}>
-                We groom the rare individuals who can think at the system level — who can see what the machine sees, and make it see further.
-              </p>
+              <p style={{ fontSize:'17px', color:'#444', lineHeight:1.8, marginBottom:'24px' }}>Most programmes teach you about finance. We put you inside one. Fellows work directly on the quantitative models that execute trades on real capital every day.</p>
+              <p style={{ fontSize:'17px', color:'#444', lineHeight:1.8 }}>If the model you build performs, it runs. If it does not, you fix it. That is the only feedback loop that matters.</p>
             </motion.div>
-            <div style={{ background: '#E0E0E0', alignSelf: 'stretch' }} />
+            <div style={{ background:'#D0D0D0' }} />
             <motion.div variants={fadeUp}>
-              <p style={{ fontFamily: 'Inter', fontSize: '18px', color: '#555555', lineHeight: 1.8, marginBottom: '24px' }}>
-                Fellowship members are embedded in the operation of OTJ Capital. They build the quantitative models. They design the risk frameworks. They interrogate the data.
-              </p>
-              <p style={{ fontFamily: 'Inter', fontSize: '18px', color: '#555555', lineHeight: 1.8 }}>
-                This is not a programme you attend. This is a transformation you undergo.
-              </p>
+              <p style={{ fontSize:'17px', color:'#444', lineHeight:1.8, marginBottom:'24px' }}>We do not train traders. We do not hire analysts. We groom system architects — people who understand quantitative finance, machine learning, and risk management at the same time.</p>
+              <p style={{ fontSize:'17px', color:'#444', lineHeight:1.8 }}>The best Fellows do not graduate and leave. They become permanent builders inside OTJ.</p>
             </motion.div>
           </motion.div>
         </motion.div>

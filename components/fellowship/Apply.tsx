@@ -2,42 +2,37 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { fadeUp, staggerContainer } from '@/lib/animations'
-import { Check } from 'lucide-react'
 
 const requirements = [
-  'Strong foundation in mathematics, statistics, or CS',
-  'Passion for financial markets and emerging economies',
-  'Experience with Python, R, or quantitative modelling',
-  'Genuine belief that AI is reshaping global capital',
-  'Based in or connected to Africa or an emerging market',
+  'Strong in mathematics, statistics, or computer science',
+  'Some experience with Python or quantitative modelling',
+  'Interested in financial markets and how they actually work',
+  'Based in Africa or an emerging market, or deeply connected to one',
+  'Willing to work on real capital from day one',
 ]
 
 export default function Apply() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1, fallbackInView: true })
+  const { ref, inView } = useInView({ triggerOnce: true, fallbackInView: true })
   return (
-    <section id="apply" ref={ref} style={{ background: '#080808', padding: '120px 32px' }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <motion.div variants={staggerContainer} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-          <motion.div variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontSize: '11px', color: '#C9A84C', letterSpacing: '4px', marginBottom: '24px' }}>COHORT ONE. 2026.</motion.div>
-          <motion.h2 variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(36px, 5vw, 52px)', color: '#FFFFFF', marginBottom: '24px', lineHeight: 1.2 }}>
-            Apply to build<br />the future.
+    <section id="apply" ref={ref} style={{ padding:'120px 32px', background:'#000', borderBottom:'1px solid #222' }}>
+      <div style={{ maxWidth:'800px', margin:'0 auto' }}>
+        <motion.div variants={staggerContainer} initial="hidden" animate={inView?'visible':'hidden'}>
+          <motion.div variants={fadeUp} style={{ fontFamily:'var(--font-mono)', fontSize:'11px', letterSpacing:'2px', color:'#666', marginBottom:'32px' }}>COHORT ONE — 2026</motion.div>
+          <motion.h2 variants={fadeUp} style={{ fontFamily:'var(--font-sg)', fontWeight:800, fontSize:'clamp(36px,5vw,64px)', color:'#fff', letterSpacing:'-1.5px', lineHeight:1.1, marginBottom:'24px' }}>
+            Apply. Build<br />the system.
           </motion.h2>
-          <motion.p variants={fadeUp} style={{ fontFamily: 'Inter', fontSize: '18px', color: '#888888', marginBottom: '48px', lineHeight: 1.7 }}>
-            We are building our first cohort. If you are a quantitative thinker, an AI engineer, a data scientist, or a market analyst who believes the future of finance is being built in the emerging world — this is for you.
-          </motion.p>
-          <motion.div variants={staggerContainer} style={{ marginBottom: '48px' }}>
-            {requirements.map((req, i) => (
-              <motion.div key={i} variants={fadeUp} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '16px' }}>
-                <div style={{ background: 'rgba(201,168,76,0.15)', borderRadius: '50%', padding: '4px', flexShrink: 0, marginTop: '1px' }}>
-                  <Check size={14} color="#C9A84C" />
-                </div>
-                <span style={{ fontFamily: 'Inter', fontSize: '16px', color: '#AAAAAA', lineHeight: 1.6 }}>{req}</span>
+          <motion.p variants={fadeUp} style={{ fontSize:'18px', color:'#888', lineHeight:1.8, marginBottom:'48px' }}>We are selecting the founding cohort now. If you are the kind of person who reads the textbook before being asked to, this is for you.</motion.p>
+          <motion.div variants={staggerContainer} style={{ marginBottom:'48px' }}>
+            {requirements.map((r,i) => (
+              <motion.div key={i} variants={fadeUp} style={{ display:'flex', gap:'16px', alignItems:'flex-start', marginBottom:'16px' }}>
+                <span style={{ fontFamily:'var(--font-mono)', fontSize:'12px', color:'#555', marginTop:'2px', flexShrink:0 }}>—</span>
+                <span style={{ fontSize:'16px', color:'#AAA', lineHeight:1.6 }}>{r}</span>
               </motion.div>
             ))}
           </motion.div>
-          <motion.div variants={fadeUp} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '16px' }}>
-            <a href="mailto:fellowship@otjfellowship.com" style={{ background: '#C9A84C', color: '#080808', padding: '16px 40px', fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '16px', textDecoration: 'none', borderRadius: '2px' }}>Apply Now →</a>
-            <a href="mailto:fellowship@otjfellowship.com" style={{ fontFamily: 'Inter', fontSize: '14px', color: '#C9A84C', textDecoration: 'none' }}>fellowship@otjfellowship.com</a>
+          <motion.div variants={fadeUp} style={{ display:'flex', flexDirection:'column', gap:'16px', alignItems:'flex-start' }}>
+            <a href="mailto:fellowship@otjfellowship.com" style={{ background:'#fff', color:'#000', padding:'16px 40px', fontFamily:'var(--font-sg)', fontWeight:700, fontSize:'16px' }}>Apply Now →</a>
+            <a href="mailto:fellowship@otjfellowship.com" style={{ fontSize:'14px', color:'#555' }}>fellowship@otjfellowship.com</a>
           </motion.div>
         </motion.div>
       </div>
