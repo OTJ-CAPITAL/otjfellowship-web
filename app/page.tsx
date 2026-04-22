@@ -8,7 +8,7 @@ import Apply from '@/components/fellowship/Apply'
 
 export default function Home() {
   return (
-    <main style={{ background: '#FAFAFA' }}>
+    <main>
       <Navigation />
       <Hero />
       <NotASchool />
